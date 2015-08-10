@@ -1,0 +1,20 @@
+<div class="col-md-6 col-md-offset-3">
+    <%= form_for(@user) do |f| %>
+      <%= render 'shared/error_messages', object: f.object %>
+      
+      <%= f.label :name %>
+      <%= f.text_field :name, class: 'form-control' %>
+
+      <%= f.label :email %>
+      <%= f.email_field :email, class: 'form-control' %>
+      
+      <%= f.label :region %>
+      <%= f.text_field :region %><br>
+      
+      <%= f.label :prof %>
+      <%= text_area  :user, :prof, :size => "30x5" %>
+     
+      <%= f.submit "Edit my account", class: "btn btn-primary" %>
+    <% end %>
+  </div>
+</div>
