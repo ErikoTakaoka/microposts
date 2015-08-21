@@ -1,7 +1,10 @@
 class MicropostsController < ApplicationController
   before_action :logged_in_user, only: [:create]
+  mount_uploader :avatar, AvatarUploader
+  belongs_to :avatar
 
   def create
+    avatar = current_us
     @micropost = current_user.microposts.build(micropost_params)
     if @micropost.save
       flash[:success] = "Micropost created!"
@@ -19,9 +22,9 @@ class MicropostsController < ApplicationController
     redirect_to request.referrer || root_url
   end
 
-  
+    
   private
   def micropost_params
-    params.require(:micropost).permit(:content)
+    params.require(:micropost).permit(:content, :avatar)
   end
 end
