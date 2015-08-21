@@ -1,10 +1,8 @@
 class MicropostsController < ApplicationController
   before_action :logged_in_user, only: [:create]
-  mount_uploader :avatar, AvatarUploader
-  belongs_to :avatar
 
   def create
-    avatar = current_us
+    avatar = current_user
     @micropost = current_user.microposts.build(micropost_params)
     if @micropost.save
       flash[:success] = "Micropost created!"
